@@ -3,8 +3,8 @@
 > [!info] Index of notes. Status: seed awal, tautan `[[...]]` menuju note yang akan ditulis (kosong jika belum ada).
 
 ## Domain utama
+- [[Harness Engineering]] — disiplin di sekeliling agen (<- rangkuman NxCode 2026-03-01, blog NxCode, belum diverifikasi mandiri)
 - [[AI Agent]] — sistem otonom, tipe, mode kegagalan khas
-- [[Harness Engineering]] — disiplin di sekeliling agen (<- rangkuman NxCode 2026)
 
 ## Prinsip
 - [[Single Source of Truth]]
