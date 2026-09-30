@@ -2,6 +2,8 @@
 
 > Disiplin merancang lingkungan, batasan, dan loop umpan balik yang membuat [[AI Agent]] pengkodean andal dalam skala produksi.
 
+**Agent = Model + Harness** ([Databricks](https://www.databricks.com/blog/ai-harness)): model = "otak" yang menalar dan memutuskan; harness = "tubuh + workspace" yang mengeksekusi, mengelola memori, menjalankan tools, menegakkan aturan. Tanpa harness, model bisa menjawab tapi tidak andal bertindak. Blok pembangunnya dirinci di [[Komponen Harness]]; siklus kerjanya di [[ReAct Loop]].
+
 **4 fungsi harness:**
 1. **Constrain** — batasi ruang gerak agen (batas arsitektural, aturan dependensi)
 2. **Inform** — beri konteks yang tepat ([[Context Engineering]], dokumentasi)
@@ -20,6 +22,10 @@ Yang menentukan keandalan coding agent bukan modelnya, tapi sistem di sekeliling
 	- Context mapping struktur repo saat startup
 	- Loop detection (mencegah "doom loops")
 	- Reasoning sandwich (penalaran tinggi untuk planning/verifikasi, medium untuk implementasi)
+
+- **Databricks**: GPT-5.5 + OfficeQA Pro Agent Harness (tugas dokumen enterprise multi-bagian) → skor **52,63%, naik dari 36,10%** dengan GPT-5.4 — error nyaris terpangkas separuh. Model membaik, tapi *harness yang menerjemahkan peningkatan itu* jadi performa produksi. Kesimpulan umum: model yang sama bisa dapat skor benchmark sangat berbeda tergantung harness; harness kuat di model kelas menengah dapat mengungguli harness lemah di model lebih kuat.
+
+**8 blok pembangun harness produksi** (Databricks) → dipetakan ke pilar di bawah: system prompt, tools & tool execution, sandbox, filesystem/durable storage, memory & context compaction, feedback loop/self-verification, guardrails & human-in-the-loop, observability & logging. Rincian tiap blok: [[Komponen Harness]]. Mode gagal khasnya: [[Mode Kegagalan Harness]].
 
 ## Tiga pilar
 
@@ -78,7 +84,14 @@ Komponen paling kurang dihargai. Kode hasil AI mengakumulasi entropi: docs menyi
 | Agent Engineering | arsitektur agen | desain internal & routing |
 | Platform Engineering | infrastruktur | deployment, scaling, operasi |
 
-Harness **mencakup** context engineering; ia beroperasi di level di atasnya.
+Harness **mencakup** context engineering; ia beroperasi di level di atasnya. Formulasi Databricks: prompt & context engineering keduanya *berada di dalam* harness engineering — evolusi bertahap: prompt (aplikasi LLM awal) → context (era RAG: retrieval pipeline, desain memori) → harness (sistem agentic).
+
+## Arah ke depan (Databricks, 2026-06)
+Seiring model makin pintar dalam planning/reasoning multi-langkah/koreksi mandiri, sebagian kerja harness akan bergeser ke dalam model — tapi harness engineering tidak hilang: eksekusi, orkestrasi tool, guardrails, observability tetap menentukan keandalan. Dua ide emerging (detail: [[Agent Sprawl]]):
+- **Disposable harness** — harness ringan spesifik-tugas, dibuang setelah pakai, bukan infrastruktur long-running
+- **Natural-language agent harness (NLAH)** — harness dikonfigurasi lewat bahasa natural yang dieksekusi shared runtime
+
+Ini sejalan dengan kesalahan umum #1 (over-engineering alur kontrol): bangun **rippable**, bukan permanen.
 
 ## Implikasi untuk insinyur
 
@@ -94,5 +107,6 @@ Keterampilan inti baru: systems thinking, menegakkan batas, penulisan spesifikas
 
 ---
 > **Catatan sumber:** artikel vendor [NxCode](https://www.nxcode.io/id/resources/news/harness-engineering-complete-guide-ai-agent-codex-2026) (2026-03-01) — vendor platform no-code sendiri. Klaim 1jt baris/LangChain dari blog OpenAI dan LangChain, tidak diverifikasi mandiri.
+> Sumber kedua: [Databricks, "What is an AI Agent Harness?"](https://www.databricks.com/blog/ai-harness) (2026-06-17) — definisi, 8 komponen, bukti OfficeQA, arah ke depan.
 
-**Tautan keluar:** [[Context Engineering]] · [[AGENTS.md]] · [[AI Agent]] · [[Single Source of Truth]] · [[Automated Testing]]
+**Tautan keluar:** [[Context Engineering]] · [[AGENTS.md]] · [[AI Agent]] · [[Single Source of Truth]] · [[Automated Testing]] · [[Komponen Harness]] · [[ReAct Loop]] · [[Mode Kegagalan Harness]] · [[Agent Sprawl]]

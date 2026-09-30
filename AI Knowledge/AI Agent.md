@@ -6,6 +6,8 @@
 - **Coding agent:** Claude Code, Codex, Cursor, Gemini CLI — membaca/mengedit repo, menjalankan tes, memakai CLI
 - **Agent runtime/host:** infrastruktur tempat agent berjalan — contoh: Orca (GUI host + server runtime, akun terkelola), herdr (TUI multiplexer agent-native, server background), inpapdi (CLI agent sendiri)
 
+Komposisi formalnya ([Databricks](https://www.databricks.com/blog/ai-harness)): **Agent = Model + Harness** — model menalar, harness mengeksekusi. Siklus kerja minimalnya: [[ReAct Loop]]; blok yang menyusun harness: [[Komponen Harness]].
+
 ## Sifat khas kode hasil agen (mode kegagalan berbeda dari manusia)
 - Abstraksi berlebihan
 - Error handling tidak perlu
@@ -14,4 +16,4 @@
 
 Ini yang memotivasi checklist review khusus PR agen dan entropy management dalam [[Harness Engineering]].
 
-**Tautan keluar:** [[Harness Engineering]] · [[Doom Loop]] · [[Context Engineering]]
+**Tautan keluar:** [[Harness Engineering]] · [[Doom Loop]] · [[Context Engineering]] · [[ReAct Loop]] · [[Komponen Harness]]

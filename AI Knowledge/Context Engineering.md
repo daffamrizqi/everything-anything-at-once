@@ -13,9 +13,14 @@ Apa yang tidak bisa diakses agen dalam konteksnya = **tidak ada**. Pengetahuan d
 
 → Konsekuensi: **repositori harus satu-satunya [[Single Source of Truth]]**.
 
+## Dinamika konteks jangka panjang (Databricks)
+Model tidak menyimpan memori di luar context window; harness yang mengatur:
+- **Dalam satu tugas:** *context compaction* — saat percakapan memanjang, ringkas/trim bagian lama agar model tidak kewalahan. Kegagalannya: [[Mode Kegagalan Harness#Context rot]].
+- **Lintas sesi:** simpan & ambil riwayat relevan sehingga agen bisa melanjutkan pekerjaan dengan kesadaran atas apa yang sudah dilakukan (workspace file bersama, bukan cuma chat).
+
 ## Instrumen nyata
 - [[AGENTS.md]] / [[CLAUDE.md]] / `.cursorrules` — aturan proyek yang dibaca agen
 - LLM-based dokumentasi yang divalidasi linter (docs-as-code)
 - Data observability yang diakses agen (bukan hanya dasbor manusia)
 
-**Tautan keluar:** [[Harness Engineering]] · [[AGENTS.md]] · [[Single Source of Truth]]
+**Tautan keluar:** [[Harness Engineering]] · [[AGENTS.md]] · [[Single Source of Truth]] · [[Komponen Harness]] · [[Mode Kegagalan Harness]]
