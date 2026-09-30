@@ -11,5 +11,6 @@
 - Konteks kurang → agen menebak dan menebak lagi
 - Tanpa constraint → agen menjelajahi jalan buntu tanpa batas
 - Tanpa verifikasi mandiri sebelum menyatakan "selesai"
+- **Context rot + weak verification** (Databricks): riwayat yang membusuk menurunkan kualitas reasoning, dan tanpa loop cek agen mengklaim selesai prematur — kombinasi pemicu langsung doom loop; daftar lengkap: [[Mode Kegagalan Harness]]
 
-**Tautan keluar:** [[AI Agent]] · [[Harness Engineering]] · [[Context Engineering]]
+**Tautan keluar:** [[AI Agent]] · [[Harness Engineering]] · [[Context Engineering]] · [[Mode Kegagalan Harness]]
